@@ -1,4 +1,4 @@
-﻿namespace FirstTesting
+﻿namespace FirstTesting.EvenOrOdd
 {
     public class Evaluator
     {

@@ -1,11 +1,12 @@
 ﻿using Xunit;
 
-namespace FirstTesting
+namespace FirstTesting.EvenOrOdd
 {
     public class EvaluatorTest
     {
         [Fact]
-        public void Evaluate_Should_Return_Even() {
+        public void Evaluate_Should_Return_Even()
+        {
             const int input = 6;
 
             var evaluator = new Evaluator();
