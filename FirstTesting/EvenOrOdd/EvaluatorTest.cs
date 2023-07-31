@@ -9,9 +9,7 @@ namespace FirstTesting.EvenOrOdd
         {
             const int input = 6;
 
-            var evaluator = new Evaluator();
-
-            var actual = evaluator.Evaluate(input);
+            var actual = Evaluator.Evaluate(input);
 
             Assert.Equal("Even", actual);
         }
@@ -21,9 +19,7 @@ namespace FirstTesting.EvenOrOdd
         {
             const int input = 10;
 
-            var evaluator = new Evaluator();
-
-            var actual = evaluator.Evaluate(input);
+            var actual = Evaluator.Evaluate(input);
 
             Assert.Equal("Odd", actual);
         }
