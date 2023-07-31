@@ -23,6 +23,23 @@ namespace Academic.Domain.Tests
 
             Assert.Equal(tuition, course.Tuition);
         }
+
+        [Fact]
+        public void Constructor_ShouldThrowException_when_NameIsNotProvided()
+        {
+            const int id = 1;
+
+            const string name = "TDD Test Driven";
+
+            const bool isOnline = true;
+
+            const double tuition = 200;
+
+            void course() => new Course(id, name, isOnline, tuition);
+
+            Assert.Throws<Exception>(course);
+
+        }
     }
 
     public class Course
@@ -34,12 +51,20 @@ namespace Academic.Domain.Tests
 
         public Course(int id, string name, bool isOnline, double tuition)
         {
+            GuardAgainstInvalidName(name);
+
             Id = id;
             Name = name;
             IsOnline = isOnline;
             Tuition = tuition;
         }
 
-     
+        private static void GuardAgainstInvalidName(string name)
+        {
+            if (string.IsNullOrWhiteSpace(name))
+            {
+                throw new Exception();
+            }
+        }
     }
 }
