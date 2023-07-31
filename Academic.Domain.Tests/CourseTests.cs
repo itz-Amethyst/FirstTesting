@@ -29,7 +29,7 @@ namespace Academic.Domain.Tests
         {
             const int id = 1;
 
-            const string name = "TDD Test Driven";
+            const string name = "";
 
             const bool isOnline = true;
 
@@ -40,31 +40,21 @@ namespace Academic.Domain.Tests
             Assert.Throws<Exception>(course);
 
         }
-    }
 
-    public class Course
-    {
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public bool IsOnline { get; set; }
-        public double Tuition { get; set; }
-
-        public Course(int id, string name, bool isOnline, double tuition)
+        [Fact]
+        public void Constructor_ShouldThrowException_WhenTuitionIsNotProvided()
         {
-            GuardAgainstInvalidName(name);
+            const int id = 1;
 
-            Id = id;
-            Name = name;
-            IsOnline = isOnline;
-            Tuition = tuition;
-        }
+            const string name = "TDD Test Driven";
 
-        private static void GuardAgainstInvalidName(string name)
-        {
-            if (string.IsNullOrWhiteSpace(name))
-            {
-                throw new Exception();
-            }
+            const bool isOnline = true;
+
+            const double tuition = 0;
+
+            void course() => new Course(id, name, isOnline, tuition);
+
+            Assert.Throws<Exception>(course);
         }
     }
 }
