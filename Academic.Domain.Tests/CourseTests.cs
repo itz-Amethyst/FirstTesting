@@ -15,13 +15,18 @@ namespace Academic.Domain.Tests
 
             var course = new Course(id , name , isOnline , tuition);
 
-            Assert.Equal(id, course.Id);
+            course.Id.Should().Be(id);
+            course.Name.Should().Be(name);
+            course.IsOnline.Should().Be(isOnline);
+            course.Tuition.Should().Be(tuition);
 
-            Assert.Equal(name, course.Name);
+            //Assert.Equal(id, course.Id);
 
-            Assert.Equal(isOnline, course.IsOnline);
+            //Assert.Equal(name, course.Name);
 
-            Assert.Equal(tuition, course.Tuition);
+            //Assert.Equal(isOnline, course.IsOnline);
+
+            //Assert.Equal(tuition, course.Tuition);
         }
 
         [Fact]
@@ -35,9 +40,11 @@ namespace Academic.Domain.Tests
 
             const double tuition = 200;
 
-            void course() => new Course(id, name, isOnline, tuition);
+            void Course() => new Course(id, name, isOnline, tuition);
 
-            Assert.Throws<Exception>(course);
+            //Assert.Throws<Exception>(Course);
+
+            Course().Should.Throw<Exception>();
 
         }
 
@@ -52,9 +59,11 @@ namespace Academic.Domain.Tests
 
             const double tuition = 0;
 
-            void course() => new Course(id, name, isOnline, tuition);
+            void Course() => new Course(id, name, isOnline, tuition);
 
-            Assert.Throws<Exception>(course);
+            //Assert.Throws<Exception>(Course);
+
+            Course().Should().Throw<Exception>();
         }
     }
 }
