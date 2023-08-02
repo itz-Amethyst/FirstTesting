@@ -2,23 +2,29 @@
 {
     public class CourseTestBuilder
     {
-        int id = 1;
+        private const int Id = 1;
 
-        string name = "Test";
+        private string _name = "Test";
 
-        bool isOnline = true;
+        private const bool IsOnline = true;
 
-        double tuition = 200;
+        private double _tuition = 200;
 
         public CourseTestBuilder WithName(string name)
         {
-            this.name = name;
+            _name = name;
             return this;
         }
 
         public Course Build()
         {
-            return new Course(id, name, isOnline, tuition);
+            return new Course(Id, _name, IsOnline, _tuition);
+        }
+
+        public CourseTestBuilder WithTuition(double tuition)
+        {
+            _tuition = tuition;
+            return this;
         }
     }
 }

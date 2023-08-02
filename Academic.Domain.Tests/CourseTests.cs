@@ -47,15 +47,9 @@ namespace Academic.Domain.Tests
         [Fact]
         public void Constructor_ShouldThrowException_WhenTuitionIsNotProvided()
         {
-            const int id = 1;
+            var courseBuilder = new CourseTestBuilder();
 
-            const string name = "TDD Test Driven";
-
-            const bool isOnline = true;
-
-            const double tuition = 0;
-
-            void Course() => new Course(id, name, isOnline, tuition);
+            void Course() => courseBuilder.WithTuition(0).Build();
 
             //Assert.Throws<Exception>(Course);
 
