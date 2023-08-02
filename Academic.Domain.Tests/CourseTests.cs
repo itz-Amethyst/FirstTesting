@@ -57,5 +57,23 @@ namespace Academic.Domain.Tests
 
             Course().Should().ThrowExactly<CourseTuitionIsInvalid>();
         }
+
+        [Fact]
+        public void AddSection_ShouldAddNewSectionToSections_When_IdAndName_Passed()
+        {
+            // Arrange
+            var courseBuilder = new CourseTestBuilder();
+            var course = courseBuilder.Build();
+
+            var sectionToAdd = SectionFactory.Create();
+
+            // Act
+
+            course.AddSection(sectionToAdd);
+
+            // Assert
+
+            course.Sections.Should().ContainEquivalentOf(sectionToAdd);
+        }
     }
 }
