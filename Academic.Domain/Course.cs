@@ -39,4 +39,8 @@ public class Course
         }
     }
 
+    public void AddSection(Section section)
+    {
+        Sections.Add(section);
+    }
 }
