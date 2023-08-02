@@ -22,6 +22,8 @@ namespace Academic.Domain.Tests
             course.IsOnline.Should().Be(isOnline);
             course.Tuition.Should().Be(tuition);
 
+            course.Sections.Should().beEmpty();
+
             //Assert.Equal(id, course.Id);
 
             //Assert.Equal(name, course.Name);
@@ -40,7 +42,7 @@ namespace Academic.Domain.Tests
 
             //Assert.Throws<Exception>(Course);
 
-            Course().Should.Throw<Exception>();
+            Course().Should.ThrowExactly<CourseNameIsInvalidException>();
 
         }
 
@@ -53,7 +55,7 @@ namespace Academic.Domain.Tests
 
             //Assert.Throws<Exception>(Course);
 
-            Course().Should().Throw<Exception>();
+            Course().Should().ThrowExactly<CourseTuitionIsInvalid>();
         }
     }
 }

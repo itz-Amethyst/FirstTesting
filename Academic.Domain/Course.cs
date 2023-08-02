@@ -21,6 +21,7 @@ public class Course
         Name = name;
         IsOnline = isOnline;
         Tuition = tuition;
+        Sections = new List<Section>();
     }
     private static void GuardAgainstInvalidName(string name)
     {
