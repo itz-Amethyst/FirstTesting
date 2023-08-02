@@ -1,3 +1,5 @@
+using Academic.Domain.Tests;
+
 namespace Academic.Domain;
 
 public class Course
@@ -6,6 +8,8 @@ public class Course
     public string Name { get; set; }
     public bool IsOnline { get; set; }
     public double Tuition { get; set; }
+
+    public List<Section> Sections { get; set; }
 
     public Course(int id, string name, bool isOnline, double tuition)
     {
@@ -18,20 +22,20 @@ public class Course
         IsOnline = isOnline;
         Tuition = tuition;
     }
+    private static void GuardAgainstInvalidName(string name)
+    {
+        if (string.IsNullOrWhiteSpace(name))
+        {
+            throw new CourseNameIsInvalidException();
+        }
+    }
 
     private void GuardAgainstInvalidTuition()
     {
         if (Tuition <= 0)
         {
-            throw new Exception();
+            throw new CourseTuitionIsInvalid();
         }
     }
 
-    private static void GuardAgainstInvalidName(string name)
-    {
-        if (string.IsNullOrWhiteSpace(name))
-        {
-            throw new Exception();
-        }
-    }
 }
