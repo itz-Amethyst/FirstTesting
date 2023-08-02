@@ -13,7 +13,9 @@ namespace Academic.Domain.Tests
 
             const double tuition = 200;
 
-            var course = new Course(id , name , isOnline , tuition);
+            var courseBuilder = new CourseTestBuilder();
+
+            var course = courseBuilder.Build();
 
             course.Id.Should().Be(id);
             course.Name.Should().Be(name);
@@ -32,15 +34,9 @@ namespace Academic.Domain.Tests
         [Fact]
         public void Constructor_ShouldThrowException_when_NameIsNotProvided()
         {
-            const int id = 1;
+            var courseBuilder = new CourseTestBuilder();
 
-            const string name = "";
-
-            const bool isOnline = true;
-
-            const double tuition = 200;
-
-            void Course() => new Course(id, name, isOnline, tuition);
+            void Course() => courseBuilder.WithName("").Build();
 
             //Assert.Throws<Exception>(Course);
 
