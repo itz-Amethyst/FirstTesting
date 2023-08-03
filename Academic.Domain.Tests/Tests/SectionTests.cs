@@ -1,7 +1,15 @@
-﻿namespace Academic.Domain.Tests.Tests
+﻿using Academic.Domain.Tests.CollectionFixtures;
+
+namespace Academic.Domain.Tests.Tests
 {
+    [Collection("Database Collection")]
     public class SectionTests
     {
+        public SectionTests(DatabaseFixture databaseFixture)
+        {
+            
+        }
+
 
         [Fact]
         public void Constructor_ShouldConstruct_Section_Properly()

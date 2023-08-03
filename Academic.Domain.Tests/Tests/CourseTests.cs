@@ -1,14 +1,16 @@
 using Academic.Domain.Exceptions;
 using Academic.Domain.Tests.Builders;
 using Academic.Domain.Tests.ClassFixtures;
+using Academic.Domain.Tests.CollectionFixtures;
 using Academic.Domain.Tests.Factories;
 
 namespace Academic.Domain.Tests.Tests
 {
+    [Collection("Database Collection")]
     public class CourseTests : IClassFixture<IdentifierFixture>
     {
         private readonly CourseTestBuilder _courseTestBuilder;
-        public CourseTests()
+        public CourseTests(DatabaseFixture databaseFixture)
         {
             _courseTestBuilder = new CourseTestBuilder();
         }
