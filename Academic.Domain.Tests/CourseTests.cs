@@ -2,6 +2,12 @@ namespace Academic.Domain.Tests
 {
     public class CourseTests
     {
+        private readonly CourseTestBuilder _courseTestBuilder;
+        public CourseTests()
+        {
+            _courseTestBuilder = new CourseTestBuilder();
+        }
+
         [Fact]
         public void Constructor_ShouldConstructCourseProperly()
         {
@@ -13,9 +19,8 @@ namespace Academic.Domain.Tests
 
             const double tuition = 200;
 
-            var courseBuilder = new CourseTestBuilder();
 
-            var course = courseBuilder.Build();
+            var course = _courseTestBuilder.Build();
 
             course.Id.Should().Be(id);
             course.Name.Should().Be(name);
@@ -36,9 +41,8 @@ namespace Academic.Domain.Tests
         [Fact]
         public void Constructor_ShouldThrowException_when_NameIsNotProvided()
         {
-            var courseBuilder = new CourseTestBuilder();
 
-            void Course() => courseBuilder.WithName("").Build();
+            void Course() => _courseTestBuilder.WithName("").Build();
 
             //Assert.Throws<Exception>(Course);
 
@@ -49,9 +53,8 @@ namespace Academic.Domain.Tests
         [Fact]
         public void Constructor_ShouldThrowException_WhenTuitionIsNotProvided()
         {
-            var courseBuilder = new CourseTestBuilder();
 
-            void Course() => courseBuilder.WithTuition(0).Build();
+            void Course() => _courseTestBuilder.WithTuition(0).Build();
 
             //Assert.Throws<Exception>(Course);
 
@@ -62,8 +65,7 @@ namespace Academic.Domain.Tests
         public void AddSection_ShouldAddNewSectionToSections_When_IdAndName_Passed()
         {
             // Arrange
-            var courseBuilder = new CourseTestBuilder();
-            var course = courseBuilder.Build();
+            var course = _courseTestBuilder.Build();
 
             var sectionToAdd = SectionFactory.Create();
 
