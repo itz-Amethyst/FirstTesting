@@ -1,4 +1,4 @@
-using Academic.Domain.Tests;
+using Academic.Domain.Exceptions;
 
 namespace Academic.Domain;
 
@@ -35,7 +35,7 @@ public class Course
     {
         if (Tuition <= 0)
         {
-            throw new CourseTuitionIsInvalid();
+            throw new CourseTuitionIsInvalidException();
         }
     }
 

@@ -1,6 +1,11 @@
-namespace Academic.Domain.Tests
+using Academic.Domain.Exceptions;
+using Academic.Domain.Tests.Builders;
+using Academic.Domain.Tests.ClassFixtures;
+using Academic.Domain.Tests.Factories;
+
+namespace Academic.Domain.Tests.Tests
 {
-    public class CourseTests
+    public class CourseTests : IClassFixture<IdentifierFixture>
     {
         private readonly CourseTestBuilder _courseTestBuilder;
         public CourseTests()
@@ -11,6 +16,8 @@ namespace Academic.Domain.Tests
         [Fact]
         public void Constructor_ShouldConstructCourseProperly()
         {
+            var guid = IdentifierFixture.Id;
+
             const int id = 1;
 
             const string name = "TDD Test Driven";
@@ -41,6 +48,8 @@ namespace Academic.Domain.Tests
         [Fact]
         public void Constructor_ShouldThrowException_when_NameIsNotProvided()
         {
+            var guid = IdentifierFixture.Id;
+
 
             void Course() => _courseTestBuilder.WithName("").Build();
 
@@ -58,7 +67,7 @@ namespace Academic.Domain.Tests
 
             //Assert.Throws<Exception>(Course);
 
-            Course().Should().ThrowExactly<CourseTuitionIsInvalid>();
+            Course().Should().ThrowExactly<CourseTuitionIsInvalidException>();
         }
 
         [Fact]

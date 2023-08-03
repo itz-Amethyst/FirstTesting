@@ -1,4 +1,4 @@
-﻿namespace Academic.Domain.Tests
+﻿namespace Academic.Domain.Tests.Tests
 {
     public class SectionTests
     {
@@ -24,4 +24,3 @@
         }
     }
 }
- 

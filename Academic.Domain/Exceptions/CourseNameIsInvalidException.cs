@@ -1,4 +1,4 @@
-namespace Academic.Domain.Tests;
+namespace Academic.Domain.Exceptions;
 
 public class CourseNameIsInvalidException : Exception
 {
